@@ -1,0 +1,48 @@
+{
+  "name": "p2p",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "lint": "eslint --debug src/**/*.{js,jsx}",
+    "lint:write": "eslint --debug src/**/*.{js,jsx} --fix --quiet",
+    "prettier": "prettier --write src/**/*.{js,jsx}",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "elliptic": "^6.5.0",
+    "express": "^4.17.1",
+    "get-port": "^5.0.0",
+    "husky": "^3.0.1",
+    "ip": "^1.1.5",
+    "lint-staged": "^9.2.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
+  }
+}
