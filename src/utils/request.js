@@ -1,9 +1,11 @@
 const request = require('request-promise');
 
+// FIXME
+// For each request need to change IP
 const registerUser = (walletAddress, ip, port) => {
   const options = {
     method: 'POST',
-    uri: 'http://192.168.0.100:5050/user/',
+    uri: 'http://0.0.0.0:5050/user/',
     body: {
       walletAddress,
       ip,
@@ -18,10 +20,10 @@ const registerUser = (walletAddress, ip, port) => {
 const fetchUsers = () => {
   const options = {
     method: 'GET',
-    uri: 'http://192.168.0.100:5050/users/',
+    uri: 'http://0.0.0.0:5050/users/',
   };
 
-  return request.get(options);
+  return request.get(options).then(res => JSON.parse(res));
 };
 
 module.exports = {
